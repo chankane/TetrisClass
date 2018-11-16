@@ -1,0 +1,45 @@
+@startuml
+class Mino {
+Mino(colors: string[][])
++getColors(): string[][]
++rotateR(): void
++rotateL(): void
+-colors: string[][]
+}
+
+class Board {
++Board(canvas: Canvas, blockSize: int)
++setMino(): void
++disp(): void
+-blockSize: int
+-mino: Mino
+}
+
+class MainBoard extends Board{
+-{static}WIDTH = 10
+-{static}HEIGHT = 20
++MainBoard(canvas: Canvas)
++disp(): void
+-startDropTimer(): void
+-hold(): Mino
+-colors: string[][]
+-holdMino: Mino
+-nextMino: Mino
+}
+
+enum BlockSize {
+LARGE = ?
+MEDIUM = ?
+SMALL = ?
+}
+
+enum Color {
+I = "?",
+O = "?",
+J = "?",
+L = "?",
+S = "?",
+Z = "?",
+O = "?",
+}
+@enduml
