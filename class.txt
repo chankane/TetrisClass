@@ -8,7 +8,6 @@ class Mino {
 }
 
 class Board {
-+{static}swapMino(board1: Board, board2: Board): boolean
 +Board(canvas: Canvas, blockSize: int)
 +getMino(): Mino
 +setMino(Mino: mino): void
@@ -30,11 +29,13 @@ interface KeyListener {
 class MainBoard extends Board implements KeyListener {
 -{static}WIDTH = 10
 -{static}HEIGHT = 20
-+MainBoard(canvas: Canvas)
++MainBoard(canvas: Canvas, blockSize: int, holdBoard: Board, nextBoard: Board)
 +disp(): void
 -startDropping(): void
 -hold(): Mino
 -drop(): void
+-minoX: int
+-minoY: int
 -colors: string[][]
 -holdBoard: Board
 -nextBoard: Board
