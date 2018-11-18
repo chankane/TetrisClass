@@ -1,6 +1,6 @@
 @startuml
 class Mino {
-Mino(colors: string[][])
++Mino(colors: string[][])
 +getColors(): string[][]
 +rotateR(): void
 +rotateL(): void
@@ -8,38 +8,56 @@ Mino(colors: string[][])
 }
 
 class Board {
++{static}swapMino(board1: Board, board2: Board): boolean
 +Board(canvas: Canvas, blockSize: int)
-+setMino(): void
++getMino(): Mino
++setMino(Mino: mino): void
 +disp(): void
 -blockSize: int
--mino: Mino
+-mino: Mino = null
 }
 
-class MainBoard extends Board{
+interface KeyListener {
++hardDrop(): void
++softDrop(): void
++moveLeft(): void
++moveRight(): void
++rotateLeft(): void
++rotateRight(): void
++hold(): void
+}
+
+class MainBoard extends Board implements KeyListener {
 -{static}WIDTH = 10
 -{static}HEIGHT = 20
 +MainBoard(canvas: Canvas)
 +disp(): void
--startDropTimer(): void
+-startDropping(): void
 -hold(): Mino
+-drop(): void
 -colors: string[][]
--holdMino: Mino
--nextMino: Mino
+-holdBoard: Board
+-nextBoard: Board
+}
+
+class MinoFactory {
++create(): Mino
 }
 
 enum BlockSize {
-LARGE = ?
-MEDIUM = ?
-SMALL = ?
+LARGE: int = 20
+MEDIUM: int = 20
+SMALL: int = 20
 }
 
 enum Color {
-I = "?",
-O = "?",
-J = "?",
-L = "?",
-S = "?",
-Z = "?",
-O = "?",
+EMPTY: 'lightgray',
+I: string = 'cyan',
+O: string = 'yellow',
+S: string = 'lime',
+Z: string = 'red',
+J: string = 'blue',
+L: string = 'orange',
+T: string = 'magenta',
 }
 @enduml
